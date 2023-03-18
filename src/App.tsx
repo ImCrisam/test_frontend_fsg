@@ -1,18 +1,19 @@
 import { useState } from "react";
-
+import { InputCp } from "./components/InputCp";
+import { inputname } from "./configInputs";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div className="App">
-      <button
-        className="btn btn-primary"
-        onClick={() => setCount((count) => count + 1)}
-      >
-        count is {count}
-      </button>
+      <form className=" p-5">
+        <InputCp {...inputname}></InputCp>
+        <div className="col-12">
+          <button className="btn btn-primary mt-5" type="submit">
+            Submit form
+          </button>
+        </div>
+      </form>
     </div>
   );
 }
