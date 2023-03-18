@@ -7,7 +7,7 @@ export interface propInputCp {
   textRequired: string;
   autoComplete?: string;
   pattern?: string;
-  textId: string;
+  name: string;
   type: "text" | "email" | "number";
 }
 
@@ -17,8 +17,8 @@ export function InputCp(p: propInputCp) {
       <input
         type={p.type}
         className="form-control"
-        id={p.textId}
-        name={p.textId}
+        id={p.name}
+        name={p.name}
         placeholder=""
         autoComplete={p.autoComplete}
         required={p.isRequired}
@@ -39,7 +39,7 @@ export function InputCp(p: propInputCp) {
           target.setCustomValidity("");
         }}
       ></input>
-      <label htmlFor={p.textId}>{p.lable}</label>
+      <label htmlFor={p.name}>{p.lable}</label>
     </div>
   );
 }

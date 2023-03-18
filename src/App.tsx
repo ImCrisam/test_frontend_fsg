@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 import { InputCp } from "./components/InputCp";
 import { InputCpDate } from "./components/InputCpDate";
+import { InputCpSelect } from "./components/InputCpSelect";
 
 import { inputname, inputEmail } from "./configInputs";
 import { loginApi, countries } from "./services";
@@ -56,6 +57,7 @@ function App() {
         <InputCp {...inputEmail}></InputCp>
         <InputCp {...inputname}></InputCp>
         <InputCpDate></InputCpDate>
+        <InputCpSelect></InputCpSelect>
         <div className="col-12">
           <input
             className="btn btn-primary mt-5"

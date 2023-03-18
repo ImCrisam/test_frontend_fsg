@@ -1,7 +1,7 @@
 import { propInputCp } from "./components/InputCp";
 
 export const inputname: propInputCp = {
-  textId: "name",
+  name: "name",
   lable: "nombre",
   pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+([ ]?[a-zA-ZáéíóúÁÉÍÓÚñÑ]+)+$",
   textInvalid: "Ingrese solo letras",
@@ -12,7 +12,7 @@ export const inputname: propInputCp = {
 };
 
 export const inputEmail: propInputCp = {
-  textId: "email",
+  name: "email",
   lable: "Email",
   textInvalid: "Email no valido",
   isRequired: true,
