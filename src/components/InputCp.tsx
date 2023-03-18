@@ -18,12 +18,13 @@ export function InputCp(p: propInputCp) {
         type={p.type}
         className="form-control"
         id={p.textId}
+        name={p.textId}
         placeholder=""
         autoComplete={p.autoComplete}
         required={p.isRequired}
         pattern={p.pattern}
-        onInvalid={(e) => {
-          let target = e.target as HTMLInputElement;
+        onChange={(e) => {
+          const target = e.target as HTMLInputElement;
           if (!target.value && target.required) {
             target.setCustomValidity(p.textRequired + target.value);
             target.className = "form-control is-invalid";
