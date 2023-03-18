@@ -1,4 +1,4 @@
-import "./InputCp.css";
+//import "./InputCp.css";
 
 export interface propInputCp {
   lable: string;
@@ -6,7 +6,7 @@ export interface propInputCp {
   isRequired: boolean;
   textRequired: string;
   autoComplete?: string;
-  pattern: string;
+  pattern?: string;
   textId: string;
   type: "text" | "email" | "number";
 }
@@ -16,7 +16,7 @@ export function InputCp(p: propInputCp) {
     <div className="form-floating">
       <input
         type={p.type}
-        className="form-control "
+        className="form-control"
         id={p.textId}
         placeholder=""
         autoComplete={p.autoComplete}
@@ -24,11 +24,18 @@ export function InputCp(p: propInputCp) {
         pattern={p.pattern}
         onInvalid={(e) => {
           let target = e.target as HTMLInputElement;
-          if (!target.value) {
-            target.setCustomValidity(p.textRequired);
-          } else {
-            target.setCustomValidity(p.textInvalid);
+          if (!target.value && target.required) {
+            target.setCustomValidity(p.textRequired + target.value);
+            target.className = "form-control is-invalid";
+            return;
           }
+          if (target.validity.patternMismatch) {
+            target.setCustomValidity(p.textInvalid);
+            target.className = "form-control is-invalid";
+            return;
+          }
+          target.className = "form-control";
+          target.setCustomValidity("");
         }}
       ></input>
       <label htmlFor={p.textId}>{p.lable}</label>
