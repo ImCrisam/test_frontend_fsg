@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 
-export function CountDown() {
+interface propCountDownCp {
+  onFinish: () => void;
+}
+
+export function CountDownCp(p: propCountDownCp) {
   const [time, setTime] = useState({ minutes: 2, seconds: 0 });
 
   useEffect(() => {
@@ -8,6 +12,7 @@ export function CountDown() {
       const { minutes, seconds } = time;
       if (minutes === 0 && seconds === 0) {
         clearInterval(myInterval);
+        p.onFinish();
       } else {
         if (seconds === 0) {
           setTime({ minutes: minutes - 1, seconds: 59 });
