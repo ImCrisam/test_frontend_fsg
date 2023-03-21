@@ -2,18 +2,36 @@ import "./App.css";
 import { useState } from "react";
 import { FormCp, dataForm } from "./components/FormCp";
 import { Button } from "bootstrap";
+import { CountDown } from "./components/CountDown";
 
 function App() {
   const [modal, setModal] = useState(false);
   const [data, setData] = useState<dataForm>();
+  const [countdownActive, setCountdownActive] = useState(false);
 
   return (
-    <div className="App container-fluid">
-      <FormCp showModal={setModal} setData={setData}></FormCp>
+    <div className="App container-fluid ">
+      {countdownActive ? (
+        <div className={"d-flex justify-content-center flex-column mt-5"}>
+          <CountDown></CountDown>
+          <FormCp showModal={setModal} setData={setData}></FormCp>
+        </div>
+      ) : (
+        <div className="d-flex justify-content-center align-items-center vh-100">
+          <button
+            className="btn btn-outline-primary btn-lg"
+            onClick={() => {
+              setCountdownActive(true);
+            }}
+          >
+            Comenzar
+          </button>
+        </div>
+      )}
 
       <div
         style={{ display: modal ? "flex" : "none" }}
-        className={`modal ${modal ? "show bg-opacity-50 bg-black " : ""}`}
+        className={`modal  ${modal ? "show bg-opacity-50 bg-black " : ""}`}
         id="staticBackdrop"
         data-bs-backdrop="static"
         data-bs-keyboard="false"

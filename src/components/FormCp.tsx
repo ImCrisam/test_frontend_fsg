@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { InputCp } from "./InputCp";
 import { InputCpDate } from "./InputCpDate";
 import { InputCpSelect } from "./InputCpSelect";
@@ -52,7 +50,7 @@ export function FormCp(p: propFormCp) {
         handleSubmit(e);
       }}
     >
-      <div className="row d-flex justify-content-between ">
+      <div className="row d-flex justify-content-md-between  justify-content-center">
         <div className="col-12 col-md-5 mt-3">
           <InputCp {...inputname}></InputCp>
         </div>
@@ -88,7 +86,7 @@ export function FormCp(p: propFormCp) {
             })}
           </InputCpSelect>
         </div>
-        <div className=" d-grid col-7  col-md-6">
+        <div className=" d-grid col-6  col-md-6">
           <input
             className="btn btn-primary mt-5"
             type="submit"
