@@ -1,71 +1,55 @@
-import { useState, useEffect } from "react";
-
-import { InputCp } from "./components/InputCp";
-import { InputCpDate } from "./components/InputCpDate";
-import { InputCpSelect } from "./components/InputCpSelect";
-
-import { inputname, inputEmail } from "./configInputs";
-import { loginApi, countries } from "./services";
 import "./App.css";
-
-interface dataForm {
-  name: string;
-  email: string;
-  birthdate: string;
-  country?: string;
-  state?: string;
-}
+import { useState } from "react";
+import { FormCp, dataForm } from "./components/FormCp";
+import { Button } from "bootstrap";
 
 function App() {
-  const [data, setdata] = useState<dataForm>({} as dataForm);
-  const [auth, setauth] = useState<string>("");
+  const [modal, setModal] = useState(false);
+  const [data, setData] = useState<dataForm>();
 
-  useEffect(() => {
-    loginApi().then((key) => {
-      setauth(key.auth_token);
-    });
-  }, []);
-
-  useEffect(() => {
-    if (!auth) return;
-    countries(auth).then((data) => {
-      console.log(data);
-    });
-  }, [auth]);
-
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    const formData = new FormData(e.target as HTMLFormElement);
-    const obj: dataForm = {
-      name: formData.get("name") as string,
-      email: formData.get("email") as string,
-      birthdate: formData.get("birthdate") as string,
-      country: formData.get("country") as string,
-      state: formData.get("state") as string,
-    };
-    setdata({ ...obj });
-    console.log(data);
-  }
   return (
-    <div className="App">
-      <form
-        className=" p-5 "
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSubmit(e);
-        }}
+    <div className="App ">
+      <FormCp showModal={setModal} setData={setData}></FormCp>
+
+      <div
+        style={{ display: modal ? "flex" : "none" }}
+        className={`modal ${modal ? "show bg-opacity-50 bg-black " : ""}`}
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tab-index="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
       >
-        <InputCp {...inputEmail}></InputCp>
-        <InputCp {...inputname}></InputCp>
-        <InputCpDate></InputCpDate>
-        <InputCpSelect></InputCpSelect>
-        <div className="col-12">
-          <input
-            className="btn btn-primary mt-5"
-            type="submit"
-            value="Submit"
-          />
+        <div className="modal-dialog h-auto modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                onClick={() => {
+                  setModal(false);
+                }}
+              ></button>
+            </div>
+            <div className="modal-body">
+              {data ? (
+                <div className="row">
+                  <div className="col">{data.name}</div>
+                  <div className="col">{data.name}</div>
+                </div>
+              ) : (
+                <div className="row"></div>
+              )}
+            </div>
+            <div className="modal-footer d-flex justify-content-center">
+              <button className="btn btn-primary">Nuevo</button>
+            </div>
+          </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 }

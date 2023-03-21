@@ -1,3 +1,13 @@
+export interface country {
+  country_name: string;
+  country_phone_code: number;
+  country_short_name: string;
+}
+
+export interface state {
+  state_name: string;
+}
+
 export async function loginApi() {
   try {
     const response = await fetch(
@@ -18,10 +28,28 @@ export async function loginApi() {
   }
 }
 
-export async function countries(auth: string) {
+export async function countriesApi(auth: string) {
   try {
     const response = await fetch(
       "https://www.universal-tutorial.com/api/countries/",
+      {
+        headers: {
+          Accept: "application/json",
+          Authorization: "Bearer " + auth,
+        },
+      }
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function stateApiByCountry(auth: string, country: string) {
+  try {
+    const response = await fetch(
+      "https://www.universal-tutorial.com/api/states/" + country,
       {
         headers: {
           Accept: "application/json",

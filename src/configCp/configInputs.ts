@@ -1,4 +1,5 @@
-import { propInputCp } from "./components/InputCp";
+import { propInputCp } from "../components/InputCp";
+import { propInputCpSelect } from "../components/InputCpSelect";
 
 export const inputname: propInputCp = {
   name: "name",
@@ -20,4 +21,17 @@ export const inputEmail: propInputCp = {
   textRequired: "Email es requerido",
   type: "email",
   autoComplete: "email",
+};
+
+export const inputCountry: propInputCpSelect = {
+  name: "country",
+  lable: "Seleccione Pais",
+  textInvalid: "Pais es requerido",
+  textSelect: "Selecione pais",
+};
+export const inputState: propInputCpSelect = {
+  name: "state",
+  lable: "Seleccione Estado",
+  textInvalid: "Estado es requerido",
+  textSelect: "Selecione Estado",
 };
