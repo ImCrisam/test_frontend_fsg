@@ -30,7 +30,7 @@ export function FormCp(p: propFormCp) {
   const { countries, states, statesDisable, setCurrentCountry } =
     useCountryState();
 
-  const { temperature, location } = useTemperature(navigator);
+  const { temperature, location, error } = useTemperature(navigator);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     const formData = new FormData(e.target as HTMLFormElement);
@@ -46,10 +46,6 @@ export function FormCp(p: propFormCp) {
     p.setData({ ...obj });
     p.showModal(true);
   }
-
-  useEffect(() => {
-    console.log(temperature);
-  }, [temperature]);
 
   return (
     <form
@@ -95,7 +91,7 @@ export function FormCp(p: propFormCp) {
             })}
           </InputCpSelect>
         </div>
-        <div className="col-12 col-md-2 mt-3 d-flex justify-content-center align-items-center">
+        <div className="col-12 col-md-3 mt-3 d-flex justify-content-center align-items-center">
           <span className="px-3">Temperatura: </span>
           {!temperature ? (
             <div className="spinner-border text-primary" role="status">

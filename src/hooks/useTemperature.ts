@@ -5,6 +5,10 @@ import {
   getTemperature,
 } from "../services/serviceTemperature";
 
+interface GeolocationPositionError {
+  code: number;
+  message: string;
+}
 export const useTemperature = (navigator: Navigator) => {
   const [temperature, setTemperature] = useState();
   const [location, setLocation] = useState<pos>();
@@ -16,7 +20,9 @@ export const useTemperature = (navigator: Navigator) => {
         const currentPosition = await getCurrentPosition(navigator);
         setLocation(currentPosition);
       } catch (error) {
-        setError(error);
+        const e = error as GeolocationPositionError;
+        setError(e);
+        alert(e?.message);
       }
     }
     getLocation();
@@ -35,5 +41,5 @@ export const useTemperature = (navigator: Navigator) => {
     getTemp();
   }, [location]);
 
-  return { temperature, location };
+  return { temperature, location, error };
 };
