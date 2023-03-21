@@ -44,7 +44,9 @@ export function InputCpDate() {
           }
         }}
       />
-      <label htmlFor="fn">Fecha de Nacimiento</label>
+      <label className="ms-2" htmlFor="fn">
+        Fecha de Nacimiento
+      </label>
     </div>
   );
 }

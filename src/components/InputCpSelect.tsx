@@ -41,7 +41,9 @@ export function InputCpSelect(p: propInputCpSelect) {
         </option>
         {p.children}
       </select>
-      <label htmlFor="floatingSelectGrid">{p.lable}</label>
+      <label className="ms-2" htmlFor="floatingSelectGrid">
+        {p.lable}
+      </label>
     </div>
   );
 }

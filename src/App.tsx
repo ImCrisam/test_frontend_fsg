@@ -8,7 +8,7 @@ function App() {
   const [data, setData] = useState<dataForm>();
 
   return (
-    <div className="App ">
+    <div className="App container-fluid">
       <FormCp showModal={setModal} setData={setData}></FormCp>
 
       <div
@@ -37,8 +37,16 @@ function App() {
             <div className="modal-body">
               {data ? (
                 <div className="row">
-                  <div className="col">{data.name}</div>
-                  <div className="col">{data.name}</div>
+                  <div className="col-6">Nombre:</div>
+                  <div className="col-6">{data.name}</div>
+                  <div className="col-6">Correo:</div>
+                  <div className="col-6">{data.email}</div>
+                  <div className="col-6">Fecha Nacimiento:</div>
+                  <div className="col-6">{data.birthdate}</div>
+                  <div className="col-6">Pais:</div>
+                  <div className="col-6">{data.country}</div>
+                  <div className="col-6">Estado:</div>
+                  <div className="col-6">{data.state}</div>
                 </div>
               ) : (
                 <div className="row"></div>

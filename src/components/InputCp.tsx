@@ -1,5 +1,7 @@
 //import "./InputCp.css";
 
+import { useState } from "react";
+
 export interface propInputCp {
   lable: string;
   textInvalid: string;
@@ -39,7 +41,9 @@ export function InputCp(p: propInputCp) {
           target.setCustomValidity("");
         }}
       ></input>
-      <label htmlFor={p.name}>{p.lable}</label>
+      <label className="ms-2" htmlFor={p.name}>
+        {p.lable}
+      </label>
     </div>
   );
 }

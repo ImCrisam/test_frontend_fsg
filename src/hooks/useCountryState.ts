@@ -12,8 +12,8 @@ const useCountryState = () => {
   const [auth, setAuth] = useState<string>("");
   const [countries, setCountries] = useState<country[]>([]);
   const [states, setStates] = useState<state[]>([]);
-
-  const [currentCountry, setCurrentCountry] = useState<string>("");
+  const [statesDisable, setStatesDisable] = useState<boolean>(true);
+  const [currentCountry, setCountry] = useState<string>("");
 
   useEffect(() => {
     loginApi().then((key) => {
@@ -32,12 +32,18 @@ const useCountryState = () => {
     if (!currentCountry) return;
     stateApiByCountry(auth, currentCountry).then((data: state[]) => {
       setStates([...data]);
+      setStatesDisable(false);
     });
   }, [currentCountry]);
 
+  function setCurrentCountry(country: string) {
+    setStatesDisable(true);
+    setCountry(country);
+  }
   return {
     countries,
     states,
+    statesDisable,
     setCurrentCountry,
   };
 };

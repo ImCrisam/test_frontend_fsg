@@ -3,7 +3,7 @@ import { propInputCpSelect } from "../components/InputCpSelect";
 
 export const inputname: propInputCp = {
   name: "name",
-  lable: "nombre",
+  lable: "Nombre",
   pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+([ ]?[a-zA-ZáéíóúÁÉÍÓÚñÑ]+)+$",
   textInvalid: "Ingrese solo letras",
   isRequired: true,
