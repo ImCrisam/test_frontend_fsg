@@ -19,7 +19,7 @@ export function ModalCp(p: propModalCp) {
         <div className="modal-content">
           <div className="modal-body">{p.children}</div>
           <div className="modal-footer d-flex justify-content-center">
-            <a className="btn btn-primary" href="/">
+            <a className="btn btn-primary" href="/test_frontend_fsg/">
               Nuevo
             </a>
           </div>

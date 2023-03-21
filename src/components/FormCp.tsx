@@ -95,6 +95,16 @@ export function FormCp(p: propFormCp) {
             })}
           </InputCpSelect>
         </div>
+        <div className="col-12 col-md-2 mt-3 d-flex justify-content-center align-items-center">
+          <span className="px-3">Temperatura: </span>
+          {!temperature ? (
+            <div className="spinner-border text-primary" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          ) : (
+            <span className="">{temperature} C°</span>
+          )}
+        </div>
         <div className=" d-grid col-6  col-md-6">
           <input
             className="btn btn-primary mt-5"
