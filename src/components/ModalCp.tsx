@@ -1,5 +1,3 @@
-import React from "react";
-
 interface propModalCp {
   isActive: boolean;
   children?: React.ReactNode;

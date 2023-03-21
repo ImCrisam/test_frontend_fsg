@@ -1,7 +1,3 @@
-//import "./InputCp.css";
-
-import { useState } from "react";
-
 export interface propInputCp {
   lable: string;
   textInvalid: string;

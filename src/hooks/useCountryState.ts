@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   loginApi,
@@ -6,7 +6,7 @@ import {
   country,
   state,
   stateApiByCountry,
-} from "../services";
+} from "../services/serviceCountryState";
 
 const useCountryState = () => {
   const [auth, setAuth] = useState<string>("");

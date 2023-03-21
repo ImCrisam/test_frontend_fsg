@@ -10,6 +10,8 @@ import {
   inputCountry,
   inputState,
 } from "../configCp/configInputs";
+import { useTemperature } from "../hooks/useTemperature";
+import { useEffect } from "react";
 
 export interface dataForm {
   name: string;
@@ -28,6 +30,8 @@ export function FormCp(p: propFormCp) {
   const { countries, states, statesDisable, setCurrentCountry } =
     useCountryState();
 
+  const { temperature, location } = useTemperature(navigator);
+
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     const formData = new FormData(e.target as HTMLFormElement);
     formData;
@@ -37,10 +41,15 @@ export function FormCp(p: propFormCp) {
       birthdate: formData.get("birthdate") as string,
       country: formData.get("country") as string,
       state: formData.get("state") as string,
+      temperature: temperature,
     };
     p.setData({ ...obj });
     p.showModal(true);
   }
+
+  useEffect(() => {
+    console.log(temperature);
+  }, [temperature]);
 
   return (
     <form

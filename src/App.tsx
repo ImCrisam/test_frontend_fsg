@@ -45,10 +45,10 @@ function App() {
       <ModalCp isActive={modalData}>
         {data && (
           <div className="row">
-            <div className="col-6">Nombre:</div>
-            <div className="col-6">{data.name}</div>
-            <div className="col-6">Correo:</div>
-            <div className="col-6">{data.email}</div>
+            <div className="col-6 ">Nombre:</div>
+            <div className="col-6 text-wrap">{data.name}</div>
+            <div className="col-6 ">Correo:</div>
+            <div className="col-6 text-truncate">{data.email}</div>
             <div className="col-6">Fecha Nacimiento:</div>
             <div className="col-6">{data.birthdate}</div>
             <div className="col-6">Pais:</div>
@@ -56,7 +56,7 @@ function App() {
             <div className="col-6">Estado:</div>
             <div className="col-6">{data.state}</div>
             <div className="col-6">Temperatura:</div>
-            <div className="col-6">{data.temperature}</div>
+            <div className="col-6">{data.temperature} C°</div>
           </div>
         )}
       </ModalCp>
